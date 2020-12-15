@@ -1,14 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 
+import { MovieInputContext } from "../context/MovieContext";
 import SearchList from "./SearchList";
 import "./Search.css";
 
-const Search = ({
-  searchValue,
-  fetchMovieListAPI,
-  movieResults,
-  isFetching,
-}) => {
+const Search = () => {
+  const {
+    searchValue,
+    fetchMovieListAPI,
+    isFetching,
+  } = useContext(MovieInputContext);
+
   return (
     <div className="search">
       <input
@@ -18,7 +20,7 @@ const Search = ({
       />
       {/* {searchValue !== "" ? <SearchList movieResults={movieResults} /> : ""} */}
       {searchValue !== "" && isFetching && (
-        <SearchList movieResults={movieResults} />
+        <SearchList />
       )}
     </div>
   );

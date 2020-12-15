@@ -1,3 +1,6 @@
 import React, { createContext } from "react";
 
-export const MovieContext = createContext(null);
+export const MovieInputContext = createContext({})
+export const MovieContext = createContext({});
+
+

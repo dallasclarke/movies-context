@@ -1,9 +1,12 @@
-import React from "react";
+import React, {useContext} from "react";
 import { Link } from "react-router-dom";
 
 import "./Search.css";
+import { MovieInputContext } from "../context/MovieContext";
 
-const SearchList = ({ movieResults }) => {
+const SearchList = () => {
+  const { movieResults } = useContext(MovieInputContext)
+
   function showMovieList() {
     return movieResults.map((item, i) => {
       return (

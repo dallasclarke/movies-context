@@ -1,5 +1,7 @@
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { useState } from "react";
+import { useContext, useState } from "react";
+
+import { MovieInputContext } from "./context/MovieContext";
 
 import Search from "./Search/Search";
 import Movie from "./Movie/Movie";
@@ -34,15 +36,19 @@ function AppNav() {
     }
   }
 
+  const movieContext = {
+    searchValue,
+    fetchMovieListAPI,
+    movieResults,
+    isFetching,
+  };
+
   return (
-    <div className="App">
-      <Search
-        searchValue={searchValue}
-        fetchMovieListAPI={fetchMovieListAPI}
-        movieResults={movieResults}
-        isFetching={isFetching}
-      />
-    </div>
+    <MovieInputContext.Provider value={movieContext}>
+      <div className="App">
+        <Search />
+      </div>
+    </MovieInputContext.Provider>
   );
 }
 
